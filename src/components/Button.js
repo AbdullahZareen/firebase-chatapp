@@ -4,9 +4,9 @@ import {Text} from '.';
 import {SizeClass} from '../utils/AppTheme';
 import {ColorConst} from '../constants';
 export default function Button(props) {
-  const {title, isLoading, style, textStyle} = props;
+  const {title, isLoading, style, textStyle, onPress} = props;
   return (
-    <TouchableOpacity style={[styles.button, style]}>
+    <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
       <Text style={[textStyle, styles.text]}>{title}</Text>
     </TouchableOpacity>
   );

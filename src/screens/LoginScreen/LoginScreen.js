@@ -5,8 +5,10 @@ import {SizeClass} from '../../utils/AppTheme';
 import TextInput from '../../components/TextInput';
 import LinearGradient from 'react-native-linear-gradient';
 import {ColorConst} from '../../constants';
+import {useNavigation} from '@react-navigation/native';
 export default function LoginScreen() {
   const [isOn, setIsOn] = useState(false);
+  const navigation = useNavigation();
 
   const renderLoginScreen = () => {
     return (
@@ -31,6 +33,7 @@ export default function LoginScreen() {
               title="Login"
               style={{borderRadius: 25}}
               textStyle={{color: 'black', fontSize: SizeClass.scaleFont(16)}}
+              onPress={() => navigation.navigate('Group')}
             />
           </View>
           <View
@@ -162,7 +165,6 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     alignItems: 'center',
-    borderRadius: 5,
     height: SizeClass.SCREEN_HEIGHT,
     width: SizeClass.SCREEN_WIDTH,
     flex: 1,

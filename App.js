@@ -1,6 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import LoginScreen from './src/screens/LoginScreen/LoginScreenIndex';
+import MainStackNavigator from './src/navigations/MainStackNavigator';
 export default function App() {
-  return <LoginScreen />;
+  return <MainStackNavigator />;
 }

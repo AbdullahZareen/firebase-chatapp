@@ -7,7 +7,7 @@ export default function TextInput1(props) {
   const {onChange, defaultValue, placeHolder} = props;
   return (
     <TextInput
-      onChangeText={onChange}
+      onChange={onChange}
       defaultValue={defaultValue}
       placeholder={placeHolder || 'MY TEXT INPUT'}
       placeholderTextColor={'white'}

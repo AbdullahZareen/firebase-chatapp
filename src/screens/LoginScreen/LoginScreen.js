@@ -6,9 +6,10 @@ import TextInput from '../../components/TextInput';
 import LinearGradient from 'react-native-linear-gradient';
 import {ColorConst} from '../../constants';
 import {useNavigation} from '@react-navigation/native';
-export default function LoginScreen() {
+export default function LoginScreen(props) {
   const [isOn, setIsOn] = useState(false);
   const navigation = useNavigation();
+  const {onPressLogin, email, setEmail, password, setPassword} = props;
 
   const renderLoginScreen = () => {
     return (
@@ -22,18 +23,22 @@ export default function LoginScreen() {
           <View
             style={{paddingTop: SizeClass.getScreenHeightFromPercentage(7)}}>
             <Text style={styles.emailText}>EMAIL</Text>
-            <TextInput placeHolder="demo@gmail.com" />
+            <TextInput
+              placeHolder="demo@gmail.com"
+              onChange={setEmail}
+              defaultValue={email}
+            />
           </View>
           <View>
             <Text style={styles.emailText}>PASSWORD</Text>
-            <TextInput placeHolder="**********" />
+            <TextInput placeHolder="**********" onChange={setPassword} />
           </View>
           <View style={{margin: SizeClass.getScreenHeightFromPercentage(4)}}>
             <Button
               title="Login"
               style={{borderRadius: 25}}
               textStyle={{color: 'black', fontSize: SizeClass.scaleFont(16)}}
-              onPress={() => navigation.navigate('Group')}
+              onPress={() => onPressLogin()}
             />
           </View>
           <View

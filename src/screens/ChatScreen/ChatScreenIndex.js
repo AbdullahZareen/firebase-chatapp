@@ -1,10 +1,16 @@
-import {View, Text} from 'react-native';
-import React from 'react';
-
+import React, {useState} from 'react';
+import ChatScreen from './ChatScreen';
 export default function ChatScreenIndex() {
+  const onPressSend = () => {
+    return null;
+  };
+  const [chatText, setChatText] = useState('');
+  console.log(chatText);
   return (
-    <View>
-      <Text>ChatScreenIndex</Text>
-    </View>
+    <ChatScreen
+      chatText={chatText}
+      setChatText={setChatText}
+      onPressSend={onPressSend}
+    />
   );
 }

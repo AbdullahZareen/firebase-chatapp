@@ -4,14 +4,14 @@ import {SizeClass} from '../utils/AppTheme';
 import {ColorConst} from '../constants';
 
 export default function TextInput1(props) {
-  const {onChange, defaultValue, placeHolder} = props;
+  const {onChange, defaultValue, placeHolder, style} = props;
   return (
     <TextInput
       onChangeText={onChange}
       defaultValue={defaultValue}
       placeholder={placeHolder || 'MY TEXT INPUT'}
       placeholderTextColor={'white'}
-      style={styles.input}
+      style={[styles.input, style]}
     />
   );
 }

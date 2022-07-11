@@ -1,21 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import LoginScreen from './LoginScreen';
 import auth from '@react-native-firebase/auth';
-import {useNavigation} from '@react-navigation/native';
+import {StackRouter, useNavigation} from '@react-navigation/native';
 import {View, Text} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {userLoggedIn} from '../../redux/User/UserSlice';
+
 export default function LoginScreenIndex() {
   const [email, setEmail] = useState('abdullahzareen91@gmail.com');
   const [password, setPassword] = useState('Liverpool1');
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
-  console.log(email, password);
+
+  const dispatch = useDispatch();
+
   const onLoginPress = () => {
     setIsLoading(true);
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(response => {
-        console.log(response);
-        navigation.navigate('Group');
+        console.log('===========', response.user.email);
+        dispatch(userLoggedIn(response?.user?.email));
+        navigation.reset({index: 0, routes: [{name: 'Group'}]});
         setIsLoading(false);
       })
       .catch(error => {

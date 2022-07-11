@@ -30,7 +30,7 @@ export default function Toggle({
     useNativeDriver: false,
     easing: Easing.linear,
   }).start();
-  console.log(moveToggle);
+
   return (
     <View style={styles.container}>
       {/* {!!label && <Text style={[styles.label, labelStyle]}>{label}</Text>} */}

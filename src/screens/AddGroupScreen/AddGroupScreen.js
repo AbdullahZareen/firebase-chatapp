@@ -3,11 +3,21 @@ import React from 'react';
 import {Button, TextInput} from '../../components';
 import {ColorConst} from '../../constants';
 import {SizeClass} from '../../utils/AppTheme';
-export default function AddGroupScreen() {
+export default function AddGroupScreen({
+  group,
+  setGroup,
+  onPressCreateGroup,
+  isLoading,
+}) {
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeHolder={'.'} />
-      <Button style={styles.button} title={'CREATE GROUP'} onPress={() => {}} />
+      <TextInput style={styles.input} placeHolder={'.'} onChange={setGroup} />
+      <Button
+        style={styles.button}
+        title={'CREATE GROUP'}
+        onPress={() => onPressCreateGroup()}
+        isLoading={isLoading}
+      />
     </View>
   );
 }

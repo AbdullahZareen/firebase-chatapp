@@ -4,14 +4,21 @@ import {Text} from '../components';
 import {SizeClass} from '../utils/AppTheme';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
+
 export default function SplashScreen() {
+  const user = useSelector(state => state.user);
   const navigation = useNavigation();
   useEffect(() => {
     navigateToGroupChat();
   }, []);
   const navigateToGroupChat = () => {
     setTimeout(() => {
-      navigation.navigate('Login');
+      if (user.isLoggedIn) {
+        navigation.reset({index: 0, routes: [{name: 'Group'}]});
+      } else {
+        navigation.navigate('Login');
+      }
     }, 2000);
   };
 

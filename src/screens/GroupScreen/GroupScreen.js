@@ -1,13 +1,27 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Button, FastImage, Text} from '../../components';
 import {ColorConst, ImageConst} from '../../constants';
 import {SizeClass} from '../../utils/AppTheme';
 import {useNavigation} from '@react-navigation/native';
 
-export default function GroupScreen() {
+export default function GroupScreen({groups}) {
   const navigation = useNavigation();
-  const renderGroupNameAndImage = () => {
+  const DATA = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      title: 'First Item',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      title: 'Second Item',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      title: 'Third Item',
+    },
+  ];
+  const renderGroupNameAndImage = item => {
     return (
       <>
         <TouchableOpacity
@@ -21,7 +35,7 @@ export default function GroupScreen() {
               style={styles.image}
             />
             <View>
-              <Text style={styles.text}>MY Group Name</Text>
+              <Text style={styles.text}>{item.groupName}</Text>
             </View>
             <FastImage
               source={ImageConst.forwardIcon}
@@ -37,9 +51,11 @@ export default function GroupScreen() {
   };
   return (
     <View style={{flex: 1, backgroundColor: ColorConst.white}}>
-      {renderGroupNameAndImage()}
-      {renderGroupNameAndImage()}
-      {renderGroupNameAndImage()}
+      <FlatList
+        data={groups}
+        renderItem={({item}) => renderGroupNameAndImage(item)}
+      />
+
       <View
         style={{
           position: 'absolute',
